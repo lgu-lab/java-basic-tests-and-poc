@@ -3,7 +3,7 @@ package org.demo.perfmonitor.usage;
 import java.util.List;
 
 import org.demo.perfmonitor.tooling.TimeMeasure;
-import org.demo.perfmonitor.tooling.TimeMeasureItem;
+import org.demo.perfmonitor.tooling.TimeMeasureRecord;
 import org.demo.perfmonitor.tooling.TimeMeasures;
 
 
@@ -51,8 +51,8 @@ public class Usage1 {
 		// REPORTING
 		//--------------------------------------------------------
 		System.out.println("Time Measure Reporting : " );
-		List<TimeMeasureItem> list = TimeMeasures.getList();
-		for ( TimeMeasureItem tm : list ) {
+		List<TimeMeasureRecord> list = TimeMeasures.getList();
+		for ( TimeMeasureRecord tm : list ) {
 			System.out.println(" . " + tm );
 		}
 		

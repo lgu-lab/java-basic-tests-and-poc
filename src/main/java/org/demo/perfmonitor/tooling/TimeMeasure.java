@@ -1,5 +1,11 @@
 package org.demo.perfmonitor.tooling;
 
+/**
+ * Time measure system based on AutoCloseable resource 
+ * 
+ * @author L Guerin
+ *
+ */
 public class TimeMeasure implements AutoCloseable {
 
 	private final String name;

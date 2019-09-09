@@ -8,14 +8,14 @@ import java.util.Date;
 import java.util.LinkedList;
 
 /**
- * Time measures stored in a list
+ * Time measures storage list
  * 
- * @author laguerin
+ * @author L Guerin
  *
  */
 public class TimeMeasures {
 
-	private static final LinkedList<TimeMeasureItem> list = new LinkedList<>();
+	private static final LinkedList<TimeMeasureRecord> list = new LinkedList<>();
 
 	/**
 	 * Private constructor
@@ -31,7 +31,7 @@ public class TimeMeasures {
 	 * @param timeMeasured
 	 */
 	protected static final void register(String name, long startTime, long timeMeasured) {
-		list.add(new TimeMeasureItem(name, startTime, timeMeasured));
+		list.add(new TimeMeasureRecord(name, startTime, timeMeasured));
 	}
 
 	/**
@@ -39,7 +39,7 @@ public class TimeMeasures {
 	 * 
 	 * @return
 	 */
-	public static final LinkedList<TimeMeasureItem> getList() {
+	public static final LinkedList<TimeMeasureRecord> getList() {
 		return list;
 	}
 
@@ -55,7 +55,7 @@ public class TimeMeasures {
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fileFullPath));
 			writer.write("Time measures ( " + now + " ) \n");
-			for (TimeMeasureItem tm : list) {
+			for (TimeMeasureRecord tm : list) {
 				writer.write(" . " + tm + "\n");
 			}
 			writer.close();

@@ -1,6 +1,12 @@
 package org.demo.perfmonitor.tooling;
 
-public class TimeMeasureItem {
+/**
+ * Time measure record   
+ * 
+ * @author L Guerin
+ *
+ */
+public class TimeMeasureRecord {
 
 	private final String name;
 
@@ -14,7 +20,7 @@ public class TimeMeasureItem {
 	 * @param startTime
 	 * @param timeMeasured
 	 */
-	public TimeMeasureItem(String name, long startTime, long timeMeasured) {
+	public TimeMeasureRecord(String name, long startTime, long timeMeasured) {
 		super();
 		this.name = name;
 		this.startTime = startTime;
@@ -35,7 +41,6 @@ public class TimeMeasureItem {
 
 	@Override
 	public String toString() {
-		//return "'" + name + " (startTime:" + startTime + ") : duration = " + timeMeasured + " ms";
 		return "'" + name + "' : " + timeMeasured + " ms";
 	}
 
