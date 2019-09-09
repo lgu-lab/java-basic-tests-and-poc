@@ -53,8 +53,10 @@ public class Usage1 {
 		System.out.println("Time Measure Reporting : " );
 		List<TimeMeasureItem> list = TimeMeasures.getList();
 		for ( TimeMeasureItem tm : list ) {
-			System.out.println(" . " + tm);
+			System.out.println(" . " + tm );
 		}
+		
+		TimeMeasures.write("D:/TMP/measures.txt");
 	}
 
 }
