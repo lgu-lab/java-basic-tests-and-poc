@@ -49,14 +49,14 @@ public class TimeMeasures {
 	 * @return
 	 */
 	public static final boolean write(String fileFullPath) {
-	    SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	    String now = sdfDate.format(new Date());
-	    
+	    String now = formatDate(new Date());
 		try {
 			BufferedWriter writer = new BufferedWriter(new FileWriter(fileFullPath));
 			writer.write("Time measures ( " + now + " ) \n");
 			for (TimeMeasureRecord tm : list) {
-				writer.write(" . " + tm + "\n");
+				String startTime = "(start time " + formatDate(tm.getStartTime()) + ")" ;
+				String s = "'" + tm.getName() + "' : " + tm.getTimeMeasured() + " ms " + startTime ;
+				writer.write(" . " + s + "\n");
 			}
 			writer.close();
 			return true;
@@ -65,4 +65,13 @@ public class TimeMeasures {
 		}
 	}
 
+	private static final String formatDate(long time) {
+		Date date = new Date(time);
+	    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+	    return f.format(date);
+	}
+	private static final String formatDate(Date date) {
+	    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    return f.format(date);
+	}
 }
