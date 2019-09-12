@@ -28,9 +28,9 @@ public class Usage1 {
 			System.out.println("stop.");
 		}
 		System.out.println("----------------------------");
-		try ( TimeMeasure x = new TimeMeasure("measure1") ) {
+		try ( TimeMeasure x = new TimeMeasure("measure3") ) {
 			System.out.println("start...");
-			service.doSomethingEx(30, ERROR);
+			service.doSomethingEx(120, ERROR);
 			System.out.println("stop.");
 		}
 		catch (Exception e) {
@@ -40,7 +40,7 @@ public class Usage1 {
 		System.out.println("----------------------------");
 		
 		// Multiple try-with-resources
-		try ( TimeMeasure x = new TimeMeasure("measure1") ; OtherResource res = new OtherResource() ) {
+		try ( TimeMeasure x = new TimeMeasure("measure4") ; OtherResource res = new OtherResource() ) {
 			System.out.println("start...");
 			service.doSomethingEx(30, OK);
 			res.hello();
@@ -56,7 +56,31 @@ public class Usage1 {
 			System.out.println(" . " + tm );
 		}
 		
-		TimeMeasures.write("D:/TMP/measures.txt");
+		//--------------------------------------------------------
+		// WRITE TO FILE
+		//--------------------------------------------------------
+		TimeMeasures.write("D:/TMP/measures1");
+
+		//--------------------------------------------------------
+		// NEW SET OF MEASURES 
+		//--------------------------------------------------------
+		System.out.println("----------------------------");
+		try ( TimeMeasure x = new TimeMeasure("measure3") ) {
+			System.out.println("start...");
+			service.doSomethingEx(120, ERROR);
+			System.out.println("stop.");
+		}
+		catch (Exception e) {
+			System.out.println("Exception");
+		}
+
+		//--------------------------------------------------------
+		// WRITE TO FILE
+		//--------------------------------------------------------
+		TimeMeasures.write("D:/TMP/measures1-bis");
+		TimeMeasures.write("D:/TMP/measures1-bis");
+		TimeMeasures.write("D:/TMP/measures1-bis");
+
 	}
 
 }

@@ -9,7 +9,7 @@ public class Usage2 {
 
 		System.out.println("Noting : no measure.");
 		// Side effect test
-		TimeMeasures.write("D:/TMP/measures2.txt");
+		TimeMeasures.write("D:/TMP/measures2");
 	}
 
 }
