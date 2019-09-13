@@ -19,6 +19,7 @@ public class Usage1 {
 		System.out.println("----------------------------");
 		System.out.println("Instrumentation env var name = " + Instrumentation.getActivationEnvVarName());
 		System.out.println("Is instrumentation active ? " + Instrumentation.isActive());
+		System.out.println("Env var value : " + System.getenv(Instrumentation.getActivationEnvVarName()));
 		System.out.println("----------------------------");
 		try ( TimeMeasure x = new TimeMeasure("measure1") ) {
 			System.out.println("start...");
