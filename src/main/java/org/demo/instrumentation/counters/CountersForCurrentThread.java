@@ -14,10 +14,12 @@ public class CountersForCurrentThread {
 		}
 	};
 	
-//	public static final Map<String, Counter> countersMap() {
-//		return countersMapHolder.get();
-//	}
-
+	/**
+	 * Returns the counter associated with the given counter name<br>
+	 * The counter is automatically created if it doesn't exist
+	 * @param name
+	 * @return
+	 */
 	public static Counter getCounter(String name) {
 		Map<String, Counter> countersMap = countersMapHolder.get();
 		Counter counter = countersMap.get(name);

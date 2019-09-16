@@ -5,9 +5,11 @@ public class Instrumentation {
 	private Instrumentation() {}
 	
 	/**
-	 * Environment variable that must be defined with "true" value to activate the instrumentation 
+	 * Code instrumentation activation
+	 * This environment variable that must be defined with value = "true" 
+	 * to activate the instrumentation 
 	 */
-	private static final String  ENVIRONMENT_VAR_NAME = "INSTRUM_FLAG" ;
+	private static final String  ENVIRONMENT_VAR_NAME = "CODE_INSTRUM" ;
 
 	private static boolean active = false ;
 	private static boolean activeChecked = false ;

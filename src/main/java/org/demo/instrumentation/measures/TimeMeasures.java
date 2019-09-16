@@ -20,6 +20,10 @@ import org.demo.instrumentation.Instrumentation;
  */
 public class TimeMeasures {
 
+	/**
+	 * Maximum list size for measures storage
+	 */
+	private static final int MAX_LIST_SIZE = 2048 ;
 	
 	private static final LinkedList<TimeMeasureRecord> list = new LinkedList<>();
 
@@ -38,6 +42,9 @@ public class TimeMeasures {
 	 */
 	protected static final void register(String name, long startTime, long timeMeasured) {
 		if ( ! Instrumentation.isActive() ) return;
+		if ( list.size() >= MAX_LIST_SIZE ) {
+			list.clear();
+		}
 		list.add(new TimeMeasureRecord(name, startTime, timeMeasured));
 	}
 
