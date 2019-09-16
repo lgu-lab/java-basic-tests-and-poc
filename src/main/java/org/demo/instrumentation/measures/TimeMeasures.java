@@ -7,7 +7,6 @@ import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.demo.instrumentation.Instrumentation;
@@ -25,7 +24,7 @@ public class TimeMeasures {
 	 */
 	private static final int MAX_LIST_SIZE = 2048 ;
 	
-	private static final LinkedList<TimeMeasureRecord> list = new LinkedList<>();
+	//private static final LinkedList<TimeMeasureRecord> list = new LinkedList<>();
 
 	/**
 	 * Private constructor
@@ -42,6 +41,7 @@ public class TimeMeasures {
 	 */
 	protected static final void register(String name, long startTime, long timeMeasured) {
 		if ( ! Instrumentation.isActive() ) return;
+		List<TimeMeasureRecord> list = TimeMeasuresHolder.getList();
 		if ( list.size() >= MAX_LIST_SIZE ) {
 			list.clear();
 		}
@@ -54,7 +54,7 @@ public class TimeMeasures {
 	 * @return
 	 */
 	public static final List<TimeMeasureRecord> getList() {
-		return list;
+		return TimeMeasuresHolder.getList();
 	}
 
 	/**
@@ -91,6 +91,7 @@ public class TimeMeasures {
 	
 	private static final synchronized void printAndClearList(Writer writer, Date date, long threadId) throws IOException {
 		writer.write("Time measures ( " + formatDateHour(date) + " ) thread id : " + threadId + " \n");
+		List<TimeMeasureRecord> list = TimeMeasuresHolder.getList();
 		for (TimeMeasureRecord tm : list) {
 			String startTime = "(start time " + formatDateHourMilisec(tm.getStartTime()) + ")" ;
 			String s = "'" + tm.getName() + "' : " + tm.getTimeMeasured() + " ms " + startTime ;

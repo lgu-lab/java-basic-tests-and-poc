@@ -2,13 +2,6 @@ package org.demo.threadlocal;
 
 public class ThreadLocalHolders {
 
-//	private static Whatever getWhatever() 
-//	{
-//	    Whatever w = myThreadLocalVariable.get();
-//	    if(w == null) 
-//	        myThreadLocalVariable.set(w=new Whatever());
-//	    return w; 
-//	} 
 	//-------------------------------------------------------------------------------
 	// ThreadLocal : old form 
 	//-------------------------------------------------------------------------------
