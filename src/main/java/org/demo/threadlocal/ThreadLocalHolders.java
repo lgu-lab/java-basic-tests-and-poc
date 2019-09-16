@@ -1,6 +1,6 @@
 package org.demo.threadlocal;
 
-public class ThreadLocalObjects {
+public class ThreadLocalHolders {
 
 //	private static Whatever getWhatever() 
 //	{
@@ -35,7 +35,7 @@ public class ThreadLocalObjects {
 	}
 
 	//-------------------------------------------------------------------------------
-	// ThreadLocal : form Java 6
+	// ThreadLocal : form Java 6 with 'initialValue()'
 	//-------------------------------------------------------------------------------
 	private static final ThreadLocal<Whatever> whatever3Holder = new ThreadLocal<Whatever>() {
 		@Override
