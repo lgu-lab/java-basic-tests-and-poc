@@ -31,6 +31,10 @@ public class Counter {
 		count++;
 	}
 	
+	public void reset() {
+		count = 0L ;
+	}
+	
 	public String getName() {
 		return name;
 	}

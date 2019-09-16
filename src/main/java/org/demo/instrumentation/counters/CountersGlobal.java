@@ -3,34 +3,27 @@ package org.demo.instrumentation.counters;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Counters {
-
-	private Counters() {}
+public class CountersGlobal {
 	
-	private static final ThreadLocal<Map<String, Counter>> countersMapHolder = new ThreadLocal<Map<String, Counter>>() {
-		@Override
-		protected Map<String, Counter> initialValue() {
-			return new HashMap<>();
-		}
-	};
+	private CountersGlobal() {}
+
+	private static final Map<String, Counter> countersMap = new HashMap<>();
 	
 	/**
 	 * Returns the counter associated with the given counter name<br>
 	 * The counter is automatically created if it doesn't exist
-	 * @param counterName
+	 * @param name
 	 * @return
 	 */
-	public static Counter getCounter(String counterName) {
-		Map<String, Counter> countersMap = countersMapHolder.get();
-		Counter counter = countersMap.get(counterName);
+	public static Counter getCounter(String name) {
+		Counter counter = countersMap.get(name);
 		if ( counter == null ) {
-			long threadId = Thread.currentThread().getId();
-			counter = new Counter(counterName, 0L, threadId);
-			countersMap.put(counterName, counter);
+			counter = new Counter(name);
+			countersMap.put(name, counter);
 		}
 		return counter;
 	}
-
+	
 	/**
 	 * Increments the counter identified by the given counter name
 	 * @param counterName
