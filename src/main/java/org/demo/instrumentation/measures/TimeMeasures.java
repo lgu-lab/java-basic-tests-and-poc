@@ -3,6 +3,8 @@ package org.demo.instrumentation.measures;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
@@ -67,13 +69,27 @@ public class TimeMeasures {
 		}
 	}
 	
-	private static final synchronized void printAndClearList(BufferedWriter writer, Date date, long threadId) throws IOException {
+	public static final boolean write() {
+		if ( ! Instrumentation.isActive() ) return false;
+		Date dateNow = new Date();
+		long threadId = Thread.currentThread().getId();
+		try {
+			Writer writer = new OutputStreamWriter(System.out);
+			printAndClearList(writer, dateNow, threadId);
+			return true;
+		} catch (IOException e) {
+			return false;
+		}
+	}
+	
+	private static final synchronized void printAndClearList(Writer writer, Date date, long threadId) throws IOException {
 		writer.write("Time measures ( " + formatDateHour(date) + " ) thread id : " + threadId + " \n");
 		for (TimeMeasureRecord tm : list) {
 			String startTime = "(start time " + formatDateHourMilisec(tm.getStartTime()) + ")" ;
 			String s = "'" + tm.getName() + "' : " + tm.getTimeMeasured() + " ms " + startTime ;
 			writer.write(" . " + s + "\n");
 		}
+		writer.flush();
 		list.clear();
 	}
 	

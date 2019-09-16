@@ -13,7 +13,7 @@ public class Usage {
 		 * If thread pool size is not enough the tasks are executed sequentially 
 		 */
 		//ExecutorService executor = Executors.newFixedThreadPool(1);
-		ExecutorService executor = Executors.newFixedThreadPool(4);
+		ExecutorService executor = Executors.newFixedThreadPool(10);
 
 		//-------------------------------------------------------------------------
 		// Executor : submit / Runnable
@@ -64,12 +64,18 @@ public class Usage {
 		Future<Integer> future4 = executor.submit(new Callable<Integer>() {
             @Override
             public Integer call() {
-                System.out.println("I'm Callable task.");
+                System.out.println("Task #4 / Callable");
                 return 1 + 1;
             }
         });
 		
 		Future<Integer> future5 = executor.submit(new SquareCalculatorCallable(4));
+		
+		Future<Integer> future6 = executor.submit(() -> {
+                System.out.println("Task #6 / Callable");
+                return 1234;
+        });
+		
 		
 		//-------------------------------------------------------------------------
 		// Current main thread
@@ -90,5 +96,6 @@ public class Usage {
 		System.out.println(" - future3.get() ? : " + future3.get());
 		System.out.println(" - future4.get() ? : " + future4.get());
 		System.out.println(" - future5.get() ? : " + future5.get());
+		System.out.println(" - future6.get() ? : " + future6.get());
 	}
 }
