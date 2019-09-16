@@ -75,7 +75,7 @@ public class Usage {
                 System.out.println("Task #6 / Callable");
                 return 1234;
         });
-		
+		executor.shutdown();
 		
 		//-------------------------------------------------------------------------
 		// Current main thread
