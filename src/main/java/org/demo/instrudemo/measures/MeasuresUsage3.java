@@ -4,7 +4,7 @@ import org.demo.instrumentation.measures.TimeMeasure;
 import org.demo.instrumentation.measures.TimeMeasures;
 
 
-public class Usage3 {
+public class MeasuresUsage3 {
 
 	public static void main(String[] args) throws Exception {
 
@@ -26,6 +26,8 @@ public class Usage3 {
 		tm.close();
 		
 		TimeMeasures.write("D:/TMP/measures3");
+		TimeMeasures.write();
+		TimeMeasures.removeAll();
 	}
 
 }

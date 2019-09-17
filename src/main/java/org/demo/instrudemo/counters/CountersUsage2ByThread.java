@@ -4,7 +4,7 @@ import org.demo.instrumentation.counters.Counter;
 import org.demo.instrumentation.counters.CountersGlobal;
 import org.demo.instrumentation.counters.Counters;
 
-public class UsageByThread {
+public class CountersUsage2ByThread {
 
 	private static final String C200 = "C200" ;
 	

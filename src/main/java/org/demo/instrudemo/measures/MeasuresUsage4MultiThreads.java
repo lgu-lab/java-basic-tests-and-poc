@@ -7,7 +7,7 @@ import org.demo.instrumentation.measures.TimeMeasure;
 import org.demo.instrumentation.measures.TimeMeasures;
 
 
-public class Usage4MultiThreads {
+public class MeasuresUsage4MultiThreads {
 
 	public static void main(String[] args) throws Exception {
 

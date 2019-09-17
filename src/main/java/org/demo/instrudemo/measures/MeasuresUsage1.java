@@ -8,7 +8,7 @@ import org.demo.instrumentation.measures.TimeMeasureRecord;
 import org.demo.instrumentation.measures.TimeMeasures;
 
 
-public class Usage1 {
+public class MeasuresUsage1 {
 	private static final boolean OK = true ;
 	private static final boolean ERROR = false ;
 
@@ -40,6 +40,14 @@ public class Usage1 {
 		}
 		catch (Exception e) {
 			System.out.println("Exception");
+		}
+
+		System.out.println("----------------------------");
+		// 2 measures with the same name : not an error, just added in list, it will appear twice
+		try ( TimeMeasure x = new TimeMeasure("measure2") ) { 
+			System.out.println("start...");
+			service.doSomethingEx(80, OK);
+			System.out.println("stop.");
 		}
 		
 		System.out.println("----------------------------");

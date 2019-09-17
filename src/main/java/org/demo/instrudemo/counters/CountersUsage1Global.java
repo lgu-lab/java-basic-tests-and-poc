@@ -3,7 +3,7 @@ package org.demo.instrudemo.counters;
 import org.demo.instrumentation.counters.Counter;
 import org.demo.instrumentation.counters.CountersGlobal;
 
-public class UsageGlobal {
+public class CountersUsage1Global {
 
 	public static void main(String[] args) {
 		
