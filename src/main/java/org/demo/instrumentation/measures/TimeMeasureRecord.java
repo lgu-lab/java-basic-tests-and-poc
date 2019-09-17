@@ -12,19 +12,21 @@ public class TimeMeasureRecord {
 
 	private final long startTime;
 
-	private final long timeMeasured ;
+	private long endTime ;
+
+	private long timeMeasured ;
 
 	/**
 	 * Constructor
 	 * @param name
 	 * @param startTime
-	 * @param timeMeasured
 	 */
-	public TimeMeasureRecord(String name, long startTime, long timeMeasured) {
+	public TimeMeasureRecord(String name, long startTime) {
 		super();
 		this.name = name;
 		this.startTime = startTime;
-		this.timeMeasured = timeMeasured;
+		this.endTime = 0L;
+		this.timeMeasured = -1L ;
 	}
 
 	public String getName() {
@@ -34,7 +36,24 @@ public class TimeMeasureRecord {
 	public long getStartTime() {
 		return startTime;
 	}
+	public long getEndTime() {
+		return endTime;
+	}
 
+	public void endOfMeasure() {
+		// Compute elapsed time 
+		endTime = System.currentTimeMillis();
+		timeMeasured = endTime - startTime;
+	}
+	
+//	/**
+//	 * Set time measured 
+//	 * @param value
+//	 */
+//	public void setTimeMeasured(long value) {
+//		timeMeasured = value;
+//	}
+	
 	public long getTimeMeasured() {
 		return timeMeasured;
 	}

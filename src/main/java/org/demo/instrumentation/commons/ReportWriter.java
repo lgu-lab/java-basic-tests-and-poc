@@ -64,6 +64,12 @@ public abstract class ReportWriter {
 	    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 	    return f.format(date);
 	}
+
+	protected static final String formatTimeMilisec(long time) {
+		Date date = new Date(time);
+	    SimpleDateFormat f = new SimpleDateFormat("HH:mm:ss.SSS");
+	    return f.format(date);
+	}
 	
 	protected static final String formatDateHour(Date date) {
 	    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

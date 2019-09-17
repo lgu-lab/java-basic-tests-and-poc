@@ -17,6 +17,8 @@ public class TimeMeasures {
 	 */
 	private static final int MAX_LIST_SIZE = 2048 ;
 	
+	private static final TimeMeasureRecord FAKE_RECORD = new TimeMeasureRecord("none", 0L);
+	
 	/**
 	 * Private constructor
 	 */
@@ -30,13 +32,15 @@ public class TimeMeasures {
 	 * @param startTime
 	 * @param timeMeasured
 	 */
-	protected static final void register(String name, long startTime, long timeMeasured) {
-		if ( ! Instrumentation.isActive() ) return;
+	protected static final TimeMeasureRecord register(String name, long startTime, long timeMeasured) {
+		if ( ! Instrumentation.isActive() ) return FAKE_RECORD;
 		List<TimeMeasureRecord> list = TimeMeasuresHolder.getList();
 		if ( list.size() >= MAX_LIST_SIZE ) {
 			list.clear();
 		}
-		list.add(new TimeMeasureRecord(name, startTime, timeMeasured));
+		TimeMeasureRecord record = new TimeMeasureRecord(name, startTime);
+		list.add(record);
+		return record;
 	}
 
 	/**

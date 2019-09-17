@@ -16,10 +16,8 @@ public class TimeMeasureRoot extends TimeMeasure {
 	 * @param filePath
 	 */
 	public TimeMeasureRoot(String name, String filePath) {
-		super(name);
+		super(name, true);
 		this.filePath = filePath ;
-		// This is the 'root level' => clear the list 
-		TimeMeasures.removeAll();
 	}
 
 	/**
