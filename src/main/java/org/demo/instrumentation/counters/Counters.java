@@ -32,7 +32,7 @@ public class Counters {
 		Counter counter = countersMap.get(counterName);
 		if ( counter == null ) {
 			long threadId = Thread.currentThread().getId();
-			counter = new Counter(counterName, 0L, threadId);
+			counter = new Counter(counterName, threadId);
 			countersMap.put(counterName, counter);
 		}
 		return counter;

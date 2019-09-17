@@ -41,6 +41,8 @@ public class UsageByThread {
 		System.out.println("-----" );
 		System.out.println("REPORT / BY THREAD : " );
 		Counters.write();
+		Counters.write("D:/TMP/counters");
+
 		
 	}
 	

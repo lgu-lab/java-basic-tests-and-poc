@@ -21,7 +21,7 @@ public class CountersWriter extends ReportWriter {
 		writer.write("Counters ( " + formatDateHour(date) + " ) thread id : " + threadId + " \n");
 		for (Map.Entry<String, Counter> entry : countersMap.entrySet()) {
 			Counter c = entry.getValue();
-			String s = " . '" + c.getName() + "' = " + c.getCount() ;
+			String s = " . '" + c.getName() + "' = " + c.getValue() ;
 			if ( c.getThreadId() > 0 ) {
 				s = s + " ( thread " + c.getThreadId() + " )";
 			}

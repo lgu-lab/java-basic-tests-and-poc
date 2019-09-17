@@ -30,12 +30,14 @@ public class UsageGlobal {
 		c1.increment();
 		c1.increment();
 		c1.increment(100);
+		c2.setValue(1234);
 		System.out.println("c1 : " + c1);
 		System.out.println("c1bis : " + c1bis);
 		
 		System.out.println("-----" );
 		System.out.println("REPORT : " );
 		CountersGlobal.write();
+		CountersGlobal.write("D:/TMP/counters-global");
 		
 		System.out.println("----- REMOVE ALL " );
 		CountersGlobal.removeAll();

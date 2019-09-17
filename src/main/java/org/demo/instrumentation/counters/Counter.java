@@ -6,27 +6,43 @@ public class Counter {
 	private final long   threadId;
 	private long count = 0 ;
 	
-	public Counter(String name) {
+	/**
+	 * Creates a new counter with the given name <br>
+	 * The initial value is 0
+	 * @param name
+	 */
+	protected Counter(String name) {
 		super();
 		this.name = name;
 		this.count = 0L;
 		this.threadId = 0L;
 	}
 	
-	public Counter(String name, long count) {
+	/**
+	 * Creates a new counter with the given name and thread id<br>
+	 * The initial value is 0
+	 * @param name
+	 * @param threadId
+	 */
+	protected Counter(String name, long threadId) {
 		super();
 		this.name = name;
-		this.count = count;
-		this.threadId = 0L;
-	}
-
-	public Counter(String name, long count, long threadId) {
-		super();
-		this.name = name;
-		this.count = count;
+		this.count = 0L;
 		this.threadId = threadId;
 	}
 
+	public String getName() {
+		return name;
+	}
+	
+	public long getValue() {
+		return count;
+	}
+
+	public long getThreadId() {
+		return threadId;
+	}
+	
 	public void increment() {
 		count++;
 	}
@@ -35,22 +51,14 @@ public class Counter {
 		count = count + n ;
 	}
 	
+	public void setValue(long n) {
+		count = n ;
+	}
+	
 	public void reset() {
 		count = 0L ;
 	}
 	
-	public String getName() {
-		return name;
-	}
-	
-	public long getThreadId() {
-		return threadId;
-	}
-	
-	public long getCount() {
-		return count;
-	}
-
 	@Override
 	public String toString() {
 		return "Counter '" + name + "' (" + threadId + ") = " + count;
