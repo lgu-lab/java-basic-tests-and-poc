@@ -46,14 +46,6 @@ public class TimeMeasureRecord {
 		timeMeasured = endTime - startTime;
 	}
 	
-//	/**
-//	 * Set time measured 
-//	 * @param value
-//	 */
-//	public void setTimeMeasured(long value) {
-//		timeMeasured = value;
-//	}
-	
 	public long getTimeMeasured() {
 		return timeMeasured;
 	}

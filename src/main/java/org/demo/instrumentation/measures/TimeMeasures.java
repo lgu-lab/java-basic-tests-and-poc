@@ -22,17 +22,15 @@ public class TimeMeasures {
 	/**
 	 * Private constructor
 	 */
-	private TimeMeasures() {
-	}
+	private TimeMeasures() { }
 
 	/**
 	 * Registers the given measure
 	 * 
 	 * @param name
 	 * @param startTime
-	 * @param timeMeasured
 	 */
-	protected static final TimeMeasureRecord register(String name, long startTime, long timeMeasured) {
+	protected static final TimeMeasureRecord register(String name, long startTime) {
 		if ( ! Instrumentation.isActive() ) return FAKE_RECORD;
 		List<TimeMeasureRecord> list = TimeMeasuresHolder.getList();
 		if ( list.size() >= MAX_LIST_SIZE ) {
