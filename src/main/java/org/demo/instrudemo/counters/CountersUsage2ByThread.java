@@ -10,6 +10,8 @@ public class CountersUsage2ByThread {
 	
 	public static void main(String[] args) {
 		
+		Counters.removeAll();
+		
 		Counter c1 = Counters.getCounter("c1") ;
 		Counter c2 = Counters.getCounter("c2") ;
 		c1.increment();
