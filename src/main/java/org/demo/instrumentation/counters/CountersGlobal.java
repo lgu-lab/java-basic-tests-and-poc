@@ -3,6 +3,13 @@ package org.demo.instrumentation.counters;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Global counters management <br>
+ * All counters are shared by all threads ('static counters') <br>
+ * 
+ * @author L. Guerin
+ *
+ */
 public class CountersGlobal {
 	
 	private CountersGlobal() {}
@@ -38,6 +45,24 @@ public class CountersGlobal {
 	 */
 	public static void reset(String counterName) {
 		getCounter(counterName).reset();
+	}
+	
+	/**
+	 * Removes all the counters
+	 */
+	public static void removeAll() {
+		countersMap.clear();
+	}
+	
+
+	public static final boolean write() {
+		CountersWriter cw = new CountersWriter(countersMap);
+		return cw.write();
+	}
+	
+	public static final boolean write(String filePath) {
+		CountersWriter cw = new CountersWriter(countersMap);
+		return cw.write(filePath);
 	}
 	
 }

@@ -25,7 +25,7 @@ public class UsageByThread {
 		
 		Counters.reset(C200);
 		Counters.increment(C200);
-		Counter c1bis = CountersGlobal.getCounter("c1") ;
+		Counter c1bis = CountersGlobal.getCounter("c1-global") ;
 		c1bis.increment();
 		System.out.println("c1 : " + c1);
 		System.out.println("c1bis : " + c1bis);
@@ -34,6 +34,14 @@ public class UsageByThread {
 		System.out.println("c1 : " + c1);
 		System.out.println("c1bis : " + c1bis);
 		System.out.println("c200 : " + Counters.getCounter(C200));
+		
+		System.out.println("-----" );
+		System.out.println("REPORT / GLOBAL : " );
+		CountersGlobal.write();
+		System.out.println("-----" );
+		System.out.println("REPORT / BY THREAD : " );
+		Counters.write();
+		
 	}
 	
 	

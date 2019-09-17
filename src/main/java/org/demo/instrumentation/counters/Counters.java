@@ -3,6 +3,13 @@ package org.demo.instrumentation.counters;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Counters management by thread <br>
+ * Each counter is managed separately for each thread
+ * 
+ * @author L. Guerin
+ *
+ */
 public class Counters {
 
 	private Counters() {}
@@ -47,4 +54,22 @@ public class Counters {
 		getCounter(counterName).reset();
 	}
 	
+	/**
+	 * Removes all the counters
+	 */
+	public static void removeAll() {
+		countersMapHolder.get().clear();
+	}
+	
+	public static final boolean write() {
+		CountersWriter cw = new CountersWriter(countersMapHolder.get());
+		return cw.write();
+	}
+	
+	public static final boolean write(String filePath) {
+		CountersWriter cw = new CountersWriter(countersMapHolder.get());
+		return cw.write(filePath);
+	}
+	
+
 }

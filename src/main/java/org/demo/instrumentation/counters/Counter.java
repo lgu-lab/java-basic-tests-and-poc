@@ -31,6 +31,10 @@ public class Counter {
 		count++;
 	}
 	
+	public void increment(long n) {
+		count = count + n ;
+	}
+	
 	public void reset() {
 		count = 0L ;
 	}
