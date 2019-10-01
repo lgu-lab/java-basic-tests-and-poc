@@ -19,6 +19,10 @@ public class Instrumentation {
 		return ENVIRONMENT_VAR_NAME ;
 	}
 	
+	public static final String getSystemPropertyName() {
+		return SYSTEM_PROPERTY_NAME ;
+	}
+	
 	public static final boolean isActive() {
 		if ( activeChecked ) {
 			// Already checked
@@ -45,4 +49,12 @@ public class Instrumentation {
 		return active;
 	}
 
+	/**
+	 * To force instrumentation activation <br>
+	 * Use it only for tests, do not use in production !
+	 */
+	public static final void forceActivation() {
+		active = true ;
+		activeChecked = true ;
+	}	
 }
