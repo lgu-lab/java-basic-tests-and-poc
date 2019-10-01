@@ -43,6 +43,8 @@ public class CountersUsage3ByThread {
 		for ( int i = 0 ; i < 120 ; i++ ) {
 			myFunc2();
 		}
+		// Set counter value
+		Counters.getCounter("Nb_items").setValue(789);
 		System.out.println("process() : end" );
 	}	
 
